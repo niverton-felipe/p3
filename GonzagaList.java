@@ -1,6 +1,9 @@
 package p3;
 
+
+
 public class GonzagaList {
+
     private static final int TAM_INICIAL = 10;
     private static final int TAM_FINAL = 100;
     private Object[] listaInterna = new Object[TAM_INICIAL];
@@ -8,6 +11,7 @@ public class GonzagaList {
     private int indicePar = 2;
     private int inseridos;
     private int maiorIndice;
+
 
     public void add(Object element) throws ListaLotadaException{
         verificarTamanho();
@@ -26,21 +30,6 @@ public class GonzagaList {
             throw new ListaLotadaException("A lista já atingiu sua capacidade limite");
         }
         inseridos++;
-        /* case when indiceImpar <= 9 then insert element
-        listaInterna[indiceImpar] = element
-        maiorIndice = indiceImpar
-        indiceImpar += 2
-        inseridos++
-            else
-            case when indiceImpar <= 10 then
-            insert element listaInterna[indiceImpar] = element
-            se(indicePar > maiorIndice) then maiorIndice = indicePar
-            indicePar += 2
-            inseridos++;
-            case when indicepar > 10 throw new ListaLostadaException
-        * */
-        /*
-        * */
     }
 
     public void remove(Object element) throws PosicaoInvalidaException{
@@ -65,6 +54,7 @@ public class GonzagaList {
     }
 
     private void verificarPosicao(int position) throws  PosicaoInvalidaException{
+
         if (position <= 0 || position > maiorIndice) {
             throw new PosicaoInvalidaException("Posição inválida ou elemento inexistente na lista");
         }

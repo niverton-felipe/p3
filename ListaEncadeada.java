@@ -31,27 +31,32 @@ public class ListaEncadeada {
     public void addIndex(int index, Elemento novoElemento){
         try {
             verificarPosicao(index);
-            Elemento temp = cabeca;
-            Elemento anterior = null;
-            for(int i = 0; i < index; i++){
-                if(anterior == null){
-                    anterior = cabeca;
-                } else{
-                    anterior = anterior.proximo;
+            verificarElemento(novoElemento);
+            if(index == 0) addCabeca(novoElemento);
+            if(index == inseridos) addCalda(novoElemento);
+            if (index < inseridos) {
+                Elemento temp = cabeca;
+                for(int i = 0; i < index - 1; i++){
+                    temp = temp.proximo;
                 }
-                temp = temp.proximo;
+                Elemento restante = temp.proximo;
+                temp.proximo = novoElemento;
+                novoElemento.proximo = restante;
+                inseridos++;
             }
-            anterior.proximo = novoElemento;
-            novoElemento.proximo = temp;
-            inseridos++;
         } catch (PosicaoInvalidaException e){
             e.printStackTrace();
+        } catch (IllegalArgumentException e){
+            e.printStackTrace();
         }
-
     }
 
     private void verificarPosicao(int index) throws PosicaoInvalidaException{
-        if(index < 0 || index > inseridos) throw new PosicaoInvalidaException("Posição inválida");
+        if(index < 0 ) throw new PosicaoInvalidaException("Posição inválida");
+    }
+
+    private void verificarElemento(Elemento elemento){
+        if(elemento == null) throw new IllegalArgumentException();
     }
     public int tamanho(){
         return inseridos;

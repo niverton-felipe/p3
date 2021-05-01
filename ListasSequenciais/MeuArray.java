@@ -1,4 +1,7 @@
-package p3;
+package p3.ListasSequenciais;
+
+import p3.Exceptions.PosicaoInvalidaException;
+import p3.Exceptions.ValorInvaidoException;
 
 public class MeuArray {
     private static final int TAM_INICIAL = 3;
@@ -12,14 +15,14 @@ public class MeuArray {
         return false;
     }
 
-    public void add(Object element) throws ValorInvaidoException{
+    public void add(Object element) throws ValorInvaidoException {
         if(element == null) throw new ValorInvaidoException();
         verificarTamanhoLimiteLista();
         listaInterna[inseridos] = element;
         inseridos++;
     }
 
-    public void add(int position, Object element) throws PosicaoInvalidaException{
+    public void add(int position, Object element) throws PosicaoInvalidaException {
         /*
         * Verificar se posição é válida
         * Verificar se lista é preciso dobrar tamanho da lista

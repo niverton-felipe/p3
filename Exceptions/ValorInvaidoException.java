@@ -1,4 +1,4 @@
-package p3;
+package p3.Exceptions;
 
 public class ValorInvaidoException extends Exception {
     public ValorInvaidoException(){

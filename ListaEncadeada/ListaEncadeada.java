@@ -1,4 +1,6 @@
-package p3;
+package p3.ListaEncadeada;
+
+import p3.Exceptions.PosicaoInvalidaException;
 
 public class ListaEncadeada {
     public Elemento cabeca;

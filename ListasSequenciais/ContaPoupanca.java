@@ -1,4 +1,4 @@
-package p3;
+package p3.ListasSequenciais;
 
 public class ContaPoupanca extends Conta implements Comparable<ContaPoupanca>  {
 

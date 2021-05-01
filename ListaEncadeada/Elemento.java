@@ -1,4 +1,4 @@
-package p3;
+package p3.ListaEncadeada;
 
 public class Elemento {
     public Elemento proximo;

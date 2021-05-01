@@ -1,4 +1,7 @@
-package p3;
+package p3.Testes;
+
+import p3.ListasSequenciais.Conta;
+import p3.ListasSequenciais.ContaPoupanca;
 
 import java.util.*;
 

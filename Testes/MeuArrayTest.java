@@ -1,9 +1,11 @@
-package p3;
+package p3.Testes;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import p3.ListasSequenciais.MeuArray;
+import p3.Exceptions.ValorInvaidoException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +26,7 @@ class MeuArrayTest {
     }
 
     @Test
-    void testAdd1() throws ValorInvaidoException{
+    void testAdd1() throws ValorInvaidoException {
         MeuArray meuArray = new MeuArray();
         int expectedValue = 1;
         for(int i = 0; i < expectedValue; i++){

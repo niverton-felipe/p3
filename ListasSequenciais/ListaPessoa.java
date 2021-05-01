@@ -1,4 +1,4 @@
-package p3;
+package p3.ListasSequenciais;
 
 import java.util.ArrayList;
 import java.util.List;

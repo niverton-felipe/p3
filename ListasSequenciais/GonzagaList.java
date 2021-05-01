@@ -1,6 +1,8 @@
-package p3;
+package p3.ListasSequenciais;
 
 
+import p3.Exceptions.ListaLotadaException;
+import p3.Exceptions.PosicaoInvalidaException;
 
 public class GonzagaList {
 
@@ -13,7 +15,7 @@ public class GonzagaList {
     private int maiorIndice;
 
 
-    public void add(Object element) throws ListaLotadaException{
+    public void add(Object element) throws ListaLotadaException {
         verificarTamanho();
         if(indiceImpar <= 9){
             listaInterna[indiceImpar] = element;
@@ -32,7 +34,7 @@ public class GonzagaList {
         inseridos++;
     }
 
-    public void remove(Object element) throws PosicaoInvalidaException{
+    public void remove(Object element) throws PosicaoInvalidaException {
         int position = get(element);
         verificarPosicao(position);
         for(int i = 1; i <= maiorIndice; i++){

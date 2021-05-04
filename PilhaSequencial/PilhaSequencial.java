@@ -46,11 +46,5 @@ public class PilhaSequencial {
             listaInterna = aux;
         }
     }
-    //peek
-    //push
-    //pop
-    //size
-    //isEmpty
-    //isFull => private => dobrar tamanho
 
 }

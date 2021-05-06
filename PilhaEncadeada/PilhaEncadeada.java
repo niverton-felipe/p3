@@ -1,7 +1,7 @@
 package p3.PilhaEncadeada;
 
 public class PilhaEncadeada {
-    private Elemento cabeça;
+    private Elemento cabeca;
     private int inseridos;
 
     public void push(Elemento newElement){
@@ -9,13 +9,13 @@ public class PilhaEncadeada {
             throw new NullPointerException();
         }
 
-        if (cabeça == null){
-            cabeça = newElement;
+        if (cabeca == null){
+            cabeca = newElement;
         }
         else{
-            Elemento temp = cabeça;
-            cabeça = newElement;
-            cabeça.proximo = temp;
+            Elemento temp = cabeca;
+            cabeca = newElement;
+            cabeca.proximo = temp;
         }
         inseridos++;
     }
@@ -23,18 +23,14 @@ public class PilhaEncadeada {
     public Elemento pop(){
         Elemento elementoRemovido = null;
         if(!isEmpty()){
-            elementoRemovido = cabeça;
-            cabeça = cabeça.proximo;
+            elementoRemovido = cabeca;
+            cabeca = cabeca.proximo;
         }
         return elementoRemovido;
     }
 
     public Elemento peek(){
-        Elemento elementoNoTopo = null;
-        if(!isEmpty()){
-            elementoNoTopo = cabeça;
-        }
-        return elementoNoTopo;
+        return cabeca;
     }
 
     public int size(){

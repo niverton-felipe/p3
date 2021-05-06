@@ -4,9 +4,7 @@ public class PilhaEncadeada {
     private Elemento cabeça;
     private int inseridos;
 
-
     public void push(Elemento newElement){
-
         if(newElement == null) {
             throw new NullPointerException();
         }
@@ -20,7 +18,23 @@ public class PilhaEncadeada {
             cabeça.proximo = temp;
         }
         inseridos++;
+    }
 
+    public Elemento pop(){
+        Elemento elementoRemovido = null;
+        if(!isEmpty()){
+            elementoRemovido = cabeça;
+            cabeça = cabeça.proximo;
+        }
+        return elementoRemovido;
+    }
+
+    public Elemento peek(){
+        Elemento elementoNoTopo = null;
+        if(!isEmpty()){
+            elementoNoTopo = cabeça;
+        }
+        return elementoNoTopo;
     }
 
     public int size(){
@@ -30,13 +44,4 @@ public class PilhaEncadeada {
     public boolean isEmpty(){
         return inseridos == 0;
     }
-
-    /*
-    * size
-    * isEmpty
-    * peek
-    * push
-    * pop
-    * */
-
 }

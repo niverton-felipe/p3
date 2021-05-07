@@ -20,6 +20,11 @@ public class PilhaEncadeada {
         inseridos++;
     }
 
+    public void clear(){
+        cabeca = null;
+        inseridos = 0;
+    }
+
     public Elemento pop(){
         Elemento elementoRemovido = null;
         if(!isEmpty()){

@@ -11,6 +11,11 @@ public class PilhaSequencial {
         inseridos++;
     }
 
+    public void clear(){
+        listaInterna = new Object[ALOC_INICIAL];
+        inseridos = 0;
+    }
+
     public Object pop(){
         Object element = null;
         if(!isEmpty()){

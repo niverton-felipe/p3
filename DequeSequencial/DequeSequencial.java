@@ -23,15 +23,9 @@ public class DequeSequencial {
         isFull();
         arrayInterno[inseridos] = elemento;
         inseridos++;
-        //inseridos++
-        //verificar se lista esta cheia
-        //adicionar na posicao[inseridos]
     }
 
     public Conta removeFirst() {
-        //inseridos--
-        //mover elementos para esquerda
-        //verificar se lista está vazia
         Conta elementRemoved = null;
         if(!isEmpty()){
             elementRemoved = arrayInterno[0];
@@ -42,10 +36,6 @@ public class DequeSequencial {
     }
 
     public Conta removeLast() {
-        //verificar se lista está vazia
-        //guardar elemento removido
-        //inseridos--
-        //retornar elemento removido
         Conta elementRemoved = null;
         if(!isEmpty()){
             elementRemoved = arrayInterno[inseridos - 1];

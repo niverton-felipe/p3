@@ -32,8 +32,10 @@ public class DequeEncadeado {
             cabeca = elemento;
             rabo = elemento;
         }else {
+            Conta temp = rabo;
             rabo.proximo = elemento;
             rabo = elemento;
+            rabo.anterior = temp;
         }
         inseridos++;
     }
@@ -42,8 +44,12 @@ public class DequeEncadeado {
         Conta elementRemoved = null;
         if(!isEmpty()){
             elementRemoved = cabeca;
-            cabeca = cabeca.proximo;
-            inseridos--;
+            if(inseridos == 1){
+                clear();
+            } else {
+                cabeca = cabeca.proximo;
+                inseridos--;
+            }
         }
         return elementRemoved;
     }
@@ -52,16 +58,26 @@ public class DequeEncadeado {
         Conta elementRemoved = null;
         if(!isEmpty()){
             elementRemoved = rabo;
-            //anterior a rabo tem que retornar null e virar rabo
-            inseridos--;
+            if(inseridos == 1){
+                clear();
+            }else {
+                rabo = rabo.anterior;
+                rabo.proximo = null;
+                inseridos--;
+            }
         }
         return elementRemoved;
+    }
+
+    public void clear(){
+        this.cabeca = null;
+        this.rabo = null;
+        this.inseridos = 0;
     }
 
     public int tamanho() {
         return this.inseridos;
     }
-
     public boolean isEmpty() {
         return this.inseridos == 0;
     }

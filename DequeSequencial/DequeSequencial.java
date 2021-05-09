@@ -3,14 +3,12 @@ package p3.DequeSequencial;
 public class DequeSequencial {
 
     private static final int ALOCACAO_INICIAL = 3;
-
     private Conta[] arrayInterno = new Conta[ALOCACAO_INICIAL];
-
     private int inseridos;
 
     public void insertFirst(Conta elemento) {
-    //inseridos++
-        //verificar se lista está chei
+        //inseridos++
+        //verificar se lista está cheia
         //verificar se lista está vazia
         //mover elementos para direita
         isFull();

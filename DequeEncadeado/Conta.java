@@ -6,6 +6,7 @@ package p3.DequeEncadeado;
         private String titular;
         private double saldo;
         public Conta proximo;
+        public Conta anterior;
 
         public Conta(int agencia, int conta, String titular, double saldo) {
             this.agencia = agencia;

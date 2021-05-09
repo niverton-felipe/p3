@@ -13,9 +13,7 @@ public class DequeSequencial {
         //mover elementos para direita
         isFull();
         if(!isEmpty()){
-            for(int i = inseridos; i > 0; i--){
-                arrayInterno[i] = arrayInterno[i - 1];
-            }
+            moveElementsRight();
         }
         arrayInterno[0] = elemento;
         inseridos++;
@@ -37,9 +35,7 @@ public class DequeSequencial {
         Conta elementRemoved = null;
         if(!isEmpty()){
             elementRemoved = arrayInterno[0];
-            for(int i = 0; i < inseridos; i++){
-                arrayInterno[i] = arrayInterno[i + 1];
-            }
+            moveElementsLeft();
             inseridos--;
         }
         return elementRemoved;
@@ -59,7 +55,7 @@ public class DequeSequencial {
         return elementRemoved;
     }
 
-    public int tamanho() {
+    public int size() {
         return inseridos;
     }
 
@@ -67,13 +63,25 @@ public class DequeSequencial {
         return inseridos == 0;
     }
 
-    public void isFull(){
+    private void isFull(){
         if(inseridos == arrayInterno.length){
             Conta[] temp = new Conta[inseridos * 2];
             for(int i = 0; i < inseridos; i++){
                 temp[i] = arrayInterno[i];
             }
             arrayInterno = temp;
+        }
+    }
+
+    private void moveElementsRight(){
+        for(int i = inseridos; i > 0; i--){
+            arrayInterno[i] = arrayInterno[i - 1];
+        }
+    }
+
+    private void moveElementsLeft(){
+        for(int i = 0; i < inseridos; i++){
+            arrayInterno[i] = arrayInterno[i + 1];
         }
     }
 }

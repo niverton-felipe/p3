@@ -7,10 +7,6 @@ public class DequeSequencial {
     private int inseridos;
 
     public void insertFirst(Conta elemento) {
-        //inseridos++
-        //verificar se lista está cheia
-        //verificar se lista está vazia
-        //mover elementos para direita
         isFull();
         if(!isEmpty()){
             moveElementsRight();

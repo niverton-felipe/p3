@@ -3,7 +3,6 @@ package p3.ArvoreBinaria;
 public class No {
     private No esquerda;
     private No direito;
-    private No raiz;
 
     public No getEsquerda() {
         return esquerda;
@@ -21,11 +20,4 @@ public class No {
         this.direito = direito;
     }
 
-    public No getRaiz() {
-        return raiz;
-    }
-
-    public void setRaiz(No raiz) {
-        this.raiz = raiz;
-    }
 }

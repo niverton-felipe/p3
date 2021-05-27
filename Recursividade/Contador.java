@@ -15,5 +15,9 @@ public class Contador {
             count += countDigits(num);
         }
         return count;
+        /*countDigits(240) count = 1   count + 2 => 3
+        * countDigits(24) count = 1    count + 1 => 2
+        * countDigits(2,4) count = 1
+        * */
     }
 }

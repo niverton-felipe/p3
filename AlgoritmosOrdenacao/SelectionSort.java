@@ -22,6 +22,5 @@ public class SelectionSort {
         for(int i = 0; i < vector.length; i++){
             System.out.print(vector[i] + " ");
         }
-
     }
 }

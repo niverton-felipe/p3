@@ -30,6 +30,29 @@ public class ListaEncadeada {
         inseridos++;
     }
 
+    public Elemento removeByElement(Elemento element){
+        Elemento elementRemoved = null;
+        if(!isEmpty()){
+            if(cabeca.equals(element)){
+                elementRemoved = cabeca;
+                cabeca = elementRemoved.proximo;
+                inseridos--;
+            } else {
+                Elemento atual = cabeca;
+                while (atual.proximo != null){
+                    if(atual.proximo.equals(element)){
+                        elementRemoved = atual.proximo;
+                        atual.proximo = elementRemoved.proximo;
+                        inseridos--;
+                    } else {
+                        atual = atual.proximo;
+                    }
+                }
+            }
+        }
+        return elementRemoved;
+    }
+
     public void addIndex(int index, Elemento novoElemento){
         try {
             verificarPosicao(index);
@@ -51,6 +74,10 @@ public class ListaEncadeada {
         } catch (IllegalArgumentException e){
             e.printStackTrace();
         }
+    }
+
+    public boolean isEmpty(){
+        return inseridos == 0;
     }
 
     private void verificarPosicao(int index) throws PosicaoInvalidaException{

@@ -8,8 +8,6 @@ public class Jogador implements Comparable<Jogador> {
         this.qualidade = qualidade;
     }
 
-
-
     public Double getQualidade() {
         return qualidade;
     }

@@ -18,15 +18,5 @@ public class Main {
         for(Jogador jogador : corinthians.getPlantel()){
             System.out.println(jogador.getQualidade());
         }
-
-
-
-
-
-
-
-
-
-
     }
 }

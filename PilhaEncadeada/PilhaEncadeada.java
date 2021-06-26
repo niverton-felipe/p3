@@ -42,6 +42,23 @@ public class PilhaEncadeada {
         return inseridos;
     }
 
+    public int sizeRecursivo(Elemento cabeca){
+        int count = 0;
+        if(cabeca != null){
+            Elemento next = cabeca.proximo;
+            count += 1;
+            count += sizeRecursivo(next);
+        }
+        return count;
+    }
+
+    public void clearRecursivo(){
+        if(cabeca != null){
+            pop();
+            clearRecursivo();
+        }
+    }
+
     public boolean isEmpty(){
         return inseridos == 0;
     }

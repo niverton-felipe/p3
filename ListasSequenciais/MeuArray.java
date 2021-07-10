@@ -64,7 +64,7 @@ public class MeuArray {
             listaInterna[position] = null;
         }
         else{
-            for(int i = position; i < inseridos; i++){
+            for(int i = position; i < inseridos - 1; i++){
                 listaInterna[i] = listaInterna[i + 1];
             }
         }
@@ -86,6 +86,24 @@ public class MeuArray {
                 listaDobrada[i] = listaInterna[i];
             }
             listaInterna = listaDobrada;
+        }
+    }
+
+    public void removeDuplicate(){
+        try{
+            if (inseridos > 1) removeDuplicate(0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void removeDuplicate(int position) throws PosicaoInvalidaException{
+        if (position < inseridos - 1){
+            while(listaInterna[position].equals(listaInterna[position + 1])
+                    && position < inseridos - 1){
+                removeByIndex(position + 1);
+            }
+            removeDuplicate(position + 1);
         }
     }
 

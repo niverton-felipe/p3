@@ -21,12 +21,18 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         return value;
     }
 
+    public int size() {return N;}
+
+    public boolean isEmpty(){return N == 0;}
+
     public void put(K key, V value){
+        if(verifyMaxKey(key,value)) return;
         int i = cache(key);
         if(i < N && keys[i].compareTo(key) == 0){
             values[i] = value;
             return;
         }
+
         for(int j = N; j > i; j--){
             keys[j] = keys[j-1];
             values[j] = values[j-1];
@@ -34,6 +40,29 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         keys[i] = key;
         values[i] = value;
         N++;
+    }
+
+    public int costSearchHint(){
+        return (int) Math.log(N);
+    }
+
+    public int costSearchMiss(){
+        return costSearchHint();
+    }
+
+    private boolean verifyMaxKey(K key, V value){
+        boolean result = false;
+        if(!isEmpty()){
+            if(keys[N-1].compareTo(key) == 0){
+                values[N-1] = value;
+                result = true;
+            }else if(keys[N-1].compareTo(key) < 1){
+                keys[N] = key;
+                values[N++] = value;
+                result = true;
+            }
+        }
+        return result;
     }
 
     private int cache(K key){

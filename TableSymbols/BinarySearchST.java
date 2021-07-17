@@ -9,6 +9,19 @@ public class BinarySearchST<K extends Comparable<K>, V> {
     private int lastIndex;
     private int N;
 
+    private void resize(){
+        if(N == keys.length - 1){
+            K[] keysTemp = (K[]) new Comparable[keys.length * 2];
+            V[] valuesTemp = (V[]) new Object[values.length * 2];
+            for(int i = 0; i < N; i++){
+                keysTemp[i] = keys[i];
+                valuesTemp[i] = values[i];
+            }
+            keys = keysTemp;
+            values = valuesTemp;
+        }
+    }
+
     public BinarySearchST(int capacity){
         keys = (K[]) new Comparable[capacity];
         values = (V[]) new Object[capacity];
@@ -28,6 +41,7 @@ public class BinarySearchST<K extends Comparable<K>, V> {
     public void put(K key, V value){
         if(verifyMaxKey(key,value)) return;
         int i = cache(key);
+        resize();
         if(i < N && keys[i].compareTo(key) == 0){
             values[i] = value;
             return;
@@ -40,6 +54,20 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         keys[i] = key;
         values[i] = value;
         N++;
+    }
+
+    public K min(){
+        return keys[0];
+    }
+
+    public K max(){
+        return keys[N-1];
+    }
+
+    public K select (int k){
+        K element = null;
+        if(k >= 0 && k < N) element = keys[k];
+        return  element;
     }
 
     public int costSearchHint(){
@@ -71,8 +99,40 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         else{
             lastKey = key;
             lastIndex = rank(key);
+            i = lastIndex;
         }
         return i;
+    }
+
+    public K ceiling(K key){
+        int i = cache(key);
+        return keys[i];
+    }
+
+    public K floor(K key){
+        K element = null;
+        int i = cache(key);
+        if(i < N && key.compareTo(keys[i]) == 0) element = keys[i];
+        else if (i > 0) element = keys[i-1];
+        return element;
+    }
+
+    public void removeMax(){
+        if(!isEmpty()){
+            keys[N-1] = null;
+            values[N-1] = null;
+            N--;
+        }
+    }
+
+    public void removeMin(){
+        if(!isEmpty()){
+            for(int i = 0; i < N; i++){
+                keys[i] = keys[i+1];
+                values[i] = values[i+1];
+            }
+            N--;
+        }
     }
 
     public boolean containsKey(K key){

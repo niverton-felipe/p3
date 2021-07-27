@@ -158,22 +158,4 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         for(int i = 0; i < N; i++) queue.add(keys[i]);
         return queue;
     }
-    /*
-    @Override
-    public Iterator<K> iterator() {
-        return new ListIterator();
-    }
-
-    private class ListIterator implements Iterator<K>{
-        private int indexCurrent = 0;
-        public boolean hasNext() {return indexCurrent < N;}
-
-        public K next(){
-            K key = (K) keys[indexCurrent];
-            indexCurrent += 1;
-            return key;
-        }
-    }
-    */
-
 }

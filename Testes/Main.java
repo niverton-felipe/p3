@@ -3,6 +3,7 @@ package p3.Testes;
 public class Main {
     public static void main(String[] args) {
 
+        /*
         Time corinthians = new Time("Corinthians");
 
         for(int i = 0; i < 23; i++){
@@ -18,5 +19,9 @@ public class Main {
         for(Jogador jogador : corinthians.getPlantel()){
             System.out.println(jogador.getQualidade());
         }
+
+         */
+
+        System.out.println(-10 % 3);
     }
 }

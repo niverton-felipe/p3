@@ -22,6 +22,11 @@ public class Main {
 
          */
 
-        System.out.println(-10 % 3);
+        String s = "EASYQUTION";
+        int m = 5;
+        for(int i = 0; i < s.length(); i++){
+            System.out.println(11 * s.charAt(i) % m);
+        }
+        // 11*k % M
     }
 }

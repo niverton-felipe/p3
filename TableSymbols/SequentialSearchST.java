@@ -1,6 +1,8 @@
 package p3.TableSymbols;
 
+import java.util.ArrayDeque;
 import java.util.Iterator;
+import java.util.Queue;
 
 public class SequentialSearchST<K, V> implements Iterable<K> {
     private Node first;
@@ -40,6 +42,26 @@ public class SequentialSearchST<K, V> implements Iterable<K> {
         inseridos++;
     }
 
+    public void delete(K key){
+        if(!isEmpty()){
+            if(key.equals(first.key)){
+                if(inseridos == 1)first = null;
+                else first = first.next;
+                inseridos--;
+            } else {
+                Node current = first;
+                while (current.next != null){
+                    if(key.equals(current.next)){
+                        current.next = current.next.next;
+                        inseridos--;
+                        return;
+                    }
+                    current = current.next;
+                }
+            }
+        }
+    }
+
     public boolean containsKey(K key){
         return get(key) != null;
     }
@@ -67,7 +89,6 @@ public class SequentialSearchST<K, V> implements Iterable<K> {
             }
             removeDuplicate(node.next);
         }
-
     }
 
     public int searchMiss(K key){
@@ -96,5 +117,25 @@ public class SequentialSearchST<K, V> implements Iterable<K> {
             return item;
         }
     }
+
+    public Iterable<K> keys(){
+        Queue<K> queue = new ArrayDeque<>();
+        if(!isEmpty()){
+            Node current = first;
+            while (current != null){
+                queue.add(current.key);
+                current = current.next;
+            }
+        }
+        return queue;
+    }
+
+    /*
+    *     public Iterable<K> keys() {
+        Queue<K> queue = new ArrayDeque();
+        for(int i = 0; i < N; i++) queue.add(keys[i]);
+        return queue;
+    }
+     */
 
 }

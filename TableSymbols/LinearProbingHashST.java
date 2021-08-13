@@ -25,6 +25,7 @@ public class LinearProbingHashST<K,V> {
     }
 
     public void put(K key, V value){
+        if (N >= M/2) resize(2*M);
         int i;
         for (i = hash(key); keys[i] != null; i = (i + 1) % M){
             if(keys[i].equals(key)){

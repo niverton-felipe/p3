@@ -118,8 +118,12 @@ public class BinarySearchSET<K extends Comparable<K>> {
     }
 
     public boolean contains(K key){
-        int i = cache(key);
-        return keys[i].compareTo(key) == 0;
+        boolean result = false;
+        if(!isEmpty()){
+            int i = cache(key);
+            if(keys[i] != null) result = keys[i].compareTo(key) == 0;
+        }
+        return result;
     }
 
     public int rank(K key){

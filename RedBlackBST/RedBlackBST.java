@@ -25,6 +25,10 @@ public class RedBlackBST <K extends Comparable<K>, V> {
         return x.color == RED;
     }
 
+    public boolean contains(K key){
+        return get(key) != null;
+    }
+
     public V get(K key){
         return get(root, key);
     }
@@ -147,7 +151,7 @@ public class RedBlackBST <K extends Comparable<K>, V> {
     }
 
     public float searchHint(){
-        return (float) (1.0 * Math.log(size()));
+        return (float) (Math.log(size()));
     }
 
     public float searchMiss(){

@@ -28,5 +28,6 @@ public class BSSTMain {
         System.out.println(bn.max());
         bn.removeMin();
         System.out.println(bn.min());
+
     }
 }

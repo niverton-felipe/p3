@@ -63,9 +63,61 @@ public class Alphabet {
         for (int t = R-1; t >= 1; t /= 2) lgR++;
         return lgR;
     }
+
+    public int toIndex(char c){
+        if( c > 0 || c >= inverse.length || inverse[c] == -1) {
+            throw new IllegalArgumentException("Character " + c + " not in alphabet");
+        }
+        return inverse[c];
+    }
+
+    public int[] toIndices(String s){
+        char[] source = s.toCharArray();
+        int[] target = new int[s.length()];
+        for(int i = 0; i < source.length; i++) target[i] = toIndex(source[i]);
+        return target;
+    }
+
+    public char toChar(int index){
+        if (index < 0 || index >= R){
+            throw new IndexOutOfBoundsException("Alphabet index out of bounds");
+        }
+        return alphabet[index];
+    }
+
+    public String toChars(int[] indices){
+        StringBuilder s = new StringBuilder(indices.length);
+        for(int i = 0; i < indices.length; i++){
+            s.append(toChar(indices[i]));
+        }
+        return s.toString();
+    }
 }
 
 /*
 
+     Test client (ignores command-line arguments).
+     * Converts the string "NowIsTheTimeForAllGoodMen"
+     * (over a BASE64 alphabet)
+     * to indices, then back to characters, and prints the result.
+     * Does the same for the string "AACGAACGGTTTACCCCG"
+     * (over the DNA alphabet).
+     * Does the same for the string "01234567890123456789"
+     * (over the DECIMAL alphabet).
+
+    public static void main(String[] args) {
+        int[] encoded1  = Alphabet.BASE64.toIndices("NowIsTheTimeForAllGoodMen");
+        String decoded1 = Alphabet.BASE64.toChars(encoded1);
+        StdOut.println(decoded1);
+
+        int[] encoded2  = Alphabet.DNA.toIndices("AACGAACGGTTTACCCCG");
+        String decoded2 = Alphabet.DNA.toChars(encoded2);
+        StdOut.println(decoded2);
+
+        int[] encoded3 = Alphabet.DECIMAL.toIndices("01234567890123456789");
+        String decoded3 = Alphabet.DECIMAL.toChars(encoded3);
+        StdOut.println(decoded3);
+    }
+}
 
  */

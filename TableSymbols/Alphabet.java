@@ -65,7 +65,7 @@ public class Alphabet {
     }
 
     public int toIndex(char c){
-        if( c > 0 || c >= inverse.length || inverse[c] == -1) {
+        if( c < 0 || c >= inverse.length || inverse[c] == -1) {
             throw new IllegalArgumentException("Character " + c + " not in alphabet");
         }
         return inverse[c];
@@ -93,31 +93,3 @@ public class Alphabet {
         return s.toString();
     }
 }
-
-/*
-
-     Test client (ignores command-line arguments).
-     * Converts the string "NowIsTheTimeForAllGoodMen"
-     * (over a BASE64 alphabet)
-     * to indices, then back to characters, and prints the result.
-     * Does the same for the string "AACGAACGGTTTACCCCG"
-     * (over the DNA alphabet).
-     * Does the same for the string "01234567890123456789"
-     * (over the DECIMAL alphabet).
-
-    public static void main(String[] args) {
-        int[] encoded1  = Alphabet.BASE64.toIndices("NowIsTheTimeForAllGoodMen");
-        String decoded1 = Alphabet.BASE64.toChars(encoded1);
-        StdOut.println(decoded1);
-
-        int[] encoded2  = Alphabet.DNA.toIndices("AACGAACGGTTTACCCCG");
-        String decoded2 = Alphabet.DNA.toChars(encoded2);
-        StdOut.println(decoded2);
-
-        int[] encoded3 = Alphabet.DECIMAL.toIndices("01234567890123456789");
-        String decoded3 = Alphabet.DECIMAL.toChars(encoded3);
-        StdOut.println(decoded3);
-    }
-}
-
- */

@@ -1,5 +1,7 @@
 package p3.TableSymbols;
 
+import java.util.ArrayDeque;
+
 public class Tries<V> {
     private static int R = 256;
     private Node root;
@@ -97,6 +99,50 @@ public class Tries<V> {
         return null;
     }
 
+    public Iterable<String> keysWithPrefix(String pre){
+        ArrayDeque<String> q = new ArrayDeque<>();
+        collect(get(root, pre,0), pre, q);
+        return q;
+    }
+
+    private void collect(Node x, String pre, ArrayDeque<String> q){
+        if (x == null) return;
+        if(x.val != null) q.add(pre);
+        for(char c = 0; c < R; c++){
+            collect(x.next[c], pre + c, q );
+        }
+    }
+
+    public Iterable<String> keys(){
+        return keysWithPrefix("");
+    }
+
+    public String longestPrefixOf(String s){
+        int max = -1;
+        Node x = root;
+        for(int d = 0; x != null; d++){
+            if (x.val != null) max = d;
+            if (d == s.length()) break;
+            x = x.next[s.charAt(d)];
+        }
+        if(max == -1) return null;
+        else return s.substring(0, max);
+    }
+
+    /*
+    public String longestPrefixOf(String s) {
+   int max = -1;
+   Node x = root;
+   for (int d = 0; x != null; d++) {
+      if (x.val != null) max = d;
+      if (d == s.length()) break;
+      x = x.next[s.charAt(d)];
+   }
+   if (max == -1) return null;
+   else return s.substring(0, max);
+}
+   */
+
     public static void main(String[] args) {
         Tries<Integer> tries = new Tries<>();
         /*
@@ -113,8 +159,11 @@ public class Tries<V> {
         tries.put("zebra",10);
         tries.put("ola",5);
         tries.put("flamengo",1);
+        tries.put("olaria", 6);
+        tries.put("teste", 0);
+        //tries.delete("olaria");
 
-        System.out.println(tries.limpa());
+        System.out.println(tries.longestPrefixOf("zebraria"));
     }
 }
 

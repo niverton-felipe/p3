@@ -113,6 +113,29 @@ public class Tries<V> {
         }
     }
 
+    public Iterable<String> keysThatMatch(String s){
+        ArrayDeque<String> q = new ArrayDeque<>();
+        keysThatMatch(root, s, "", q, 0);
+        return q;
+    }
+
+    private void keysThatMatch(Node x, String key, String pre, ArrayDeque<String> q, int d){
+        if (x == null) return;
+        if(d == key.length() && x.val != null){
+            q.add(pre);
+            return;
+        }
+        else if (d == key.length()) return;
+        char c = key.charAt(d);
+        if(c != 46) keysThatMatch(x.next[c], key, pre + c, q, d+1);
+        else {
+            for(int C = 0; C < R; C++) {
+                char letter = Alphabet.EXTENDED_ASCII.toChar(C);
+                keysThatMatch(x.next[C], key, pre+letter, q,d+1 );
+            }
+        }
+    }
+
     public Iterable<String> keys(){
         return keysWithPrefix("");
     }
@@ -129,19 +152,7 @@ public class Tries<V> {
         else return s.substring(0, max);
     }
 
-    /*
-    public String longestPrefixOf(String s) {
-   int max = -1;
-   Node x = root;
-   for (int d = 0; x != null; d++) {
-      if (x.val != null) max = d;
-      if (d == s.length()) break;
-      x = x.next[s.charAt(d)];
-   }
-   if (max == -1) return null;
-   else return s.substring(0, max);
-}
-   */
+
 
     public static void main(String[] args) {
         Tries<Integer> tries = new Tries<>();
@@ -161,9 +172,11 @@ public class Tries<V> {
         tries.put("flamengo",1);
         tries.put("olaria", 6);
         tries.put("teste", 0);
+        tries.put("she", 6);
+        tries.put("the", 0);
         //tries.delete("olaria");
 
-        System.out.println(tries.longestPrefixOf("zebraria"));
+        System.out.println(tries.keysThatMatch(".he"));
     }
 }
 

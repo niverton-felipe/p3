@@ -46,6 +46,24 @@ public class Brute {
         return q;
     }
 
+    public static void searchAll(String pat, String txt){
+        int j, i;
+        int M = pat.length();
+        int N = txt.length();
+        Queue<Integer> q = new ArrayDeque<>();
+        for(i = 0; i <= N - M; i++){
+            for(j = 0; j < M; j++){
+                if(txt.charAt(i+j) != pat.charAt(j)) break;
+            }
+            if(j == M) q.add(i);
+        }
+        if(!q.isEmpty()){
+            while (!q.isEmpty()) System.out.println("Padrão encontrado na posição: " + q.remove());
+        }else{
+            System.out.println("O padrão " + pat + " não foi encontrado no texto");
+        }
+    }
+
     public static int alternativeSearch(String pat, String txt){
         int j, i;
         int M = pat.length();
@@ -63,8 +81,7 @@ public class Brute {
     }
 
     public static void main(String[] args) {
-
         System.out.println(count("BY", "ABRADA"));
-        System.out.println(findAll("BY", "AABYAA"));
+        searchAll("BY", "ABADA");
     }
 }
